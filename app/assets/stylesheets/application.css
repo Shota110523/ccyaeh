@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+.btn-gradient-flat {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: #FFF;
+  background-image: linear-gradient(#9933ff 0%, #cc99ff 100%);
+  transition: .4s;
+}
+
+.btn-gradient-flat:hover {
+  background-image: linear-gradient(#9933ff 0%, #cc99ff 70%);
+}
+
+.header-menu li {
+  margin-right: 10px;
+}
+
+.btn-circle-3d {
+  display: inline-block;
+  text-decoration: none;
+  background: #fff;
+  color: #808080;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #fff;
+  transition: .4s;
+}
+
+.btn-circle-3d:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+}
