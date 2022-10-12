@@ -1,5 +1,9 @@
-<%= image_tag @post.image, size: "500x500" %>
+<%= link_to edit_public_post_path(@post.id) do %>
+  <%= image_tag @post.image, size: "500x500" %>
+<% end %>
 
-<%= @post.title %>
+<%= @post.customer.name %>
+
+<%= @post.title %>cc
 
 <%= @post.body %>

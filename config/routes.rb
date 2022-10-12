@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
   namespace :public do
-    resources :posts, only: [:new, :index, :show, :create, :update, :destroy]
+    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
   end
   namespace :public do
     root to: "homes#top"

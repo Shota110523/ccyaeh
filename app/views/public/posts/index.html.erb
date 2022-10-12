@@ -1,13 +1,13 @@
 <h6>一覧</h6>
 <% @posts.each do |post| %>
 
-  <%#= post.customer.name %>
+  <%= post.customer.name %>
 
-  <%#= link_to public_post_path(post.id) do %>
-  <%= image_tag post.image, size: "800x800" %>
-  <%# end %>
+  <%= link_to public_post_path(post.id) do %>
+    <%= image_tag post.image, size: "800x800" %>
+  <% end %>
 
-  <%= post.title %>
+  <%= post.title %>cc
 
   <%= post.body %>
 
