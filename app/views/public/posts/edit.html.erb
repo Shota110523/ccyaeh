@@ -1,15 +1,15 @@
 <%= form_with model: @post, url: public_post_path, method: :patch do |f| %>
 
   <div class="form-group">
-  <h6>画像</h6>
+    <h6>画像</h6>
     <%= f.file_field :image, accept: "image/*" %>
   </div>
   <div class="form-group">
-  <h6>排気量</h6>
+    <h6>排気量</h6>
     <%= f.text_field :title %>cc
   </div>
   <div class="form-group">
-  <h6>キャプション</h6>
+    <h6>キャプション</h6>
     <%= f.text_area :body %>
   </div>
   <%= f.submit '変更保存' %>

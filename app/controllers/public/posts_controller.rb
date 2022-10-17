@@ -5,12 +5,13 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all#.order(created_at: :desc)
-   
+
     # @customer = Customer.all
   end
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def create

@@ -13,7 +13,7 @@
                   <% else %>
                     <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
                   <% end %>
-                  <span><%= link_to Customer.find(post.customer_id).name, public_customer_path(@customer.id) %></span>
+                  <span><%= Customer.find(post.customer_id).name %></span>
                 </div>
                 <div class="card mb-4 shadow-sm">
                   <div class="card-image">
@@ -25,6 +25,7 @@
                 <div class="card-body">
                   <p class="card-text"><%= "#{post.title}cc" if !post.title.blank? %></p>
                   <p class="card-text"><%= post.body if !post.body.blank? %></p>
+                  <p class="card-text"><%= link_to "#{post.comments.count} コメント", public_post_path(post.id) %></p>
                 </div>
               </div>
             </div>

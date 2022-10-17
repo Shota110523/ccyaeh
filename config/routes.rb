@@ -41,11 +41,11 @@ Rails.application.routes.draw do
   namespace :public do
     resources :favorites, only: [:index, :create, :destroy]
   end
+
   namespace :public do
-    resources :comments, only: [:create]
-  end
-  namespace :public do
-    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+      resources :comments, only: [:create, :destroy]
+    end
   end
   namespace :public do
     root to: "homes#top"

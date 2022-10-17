@@ -7,6 +7,10 @@
   <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
 <% end %>
 
+<% if @customer == current_customer %>
+  <p><%= link_to "プロフィール編集", edit_public_customer_path(@customer) %></p>
+<% end %>
+
 <% @customer.posts.each do |customer_post| %>
 
   <% if customer_post.image.attached? %>
