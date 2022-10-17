@@ -1,14 +1,36 @@
-<h6>一覧</h6>
-<% @posts.each do |post| %>
-
-  <%= post.customer.name %>
-
-  <%= link_to public_post_path(post.id) do %>
-    <%= image_tag post.image, size: "800x800" %>
-  <% end %>
-
-  <%= post.title %>cc
-
-  <%= post.body %>
-
-<% end %>
+<%# 投稿一覧画面 %>
+<div class="album">
+  <div class="d-flex justify-content-center">
+    <div class="container">
+      <div class="row">
+        <% @posts.each do |post| %>
+          <div class="wrap">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <% if post.customer.profile_image.attached? %>
+                    <%= image_tag post.customer.profile_image, size: "50x50" %>
+                  <% else %>
+                    <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+                  <% end %>
+                  <span><%= link_to Customer.find(post.customer_id).name, public_customer_path(@customer.id) %></span>
+                </div>
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-image">
+                    <%= link_to public_post_path(post.id) do %>
+                      <%= image_tag post.image, height: "100%", width: "100%" %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p class="card-text"><%= "#{post.title}cc" if !post.title.blank? %></p>
+                  <p class="card-text"><%= post.body if !post.body.blank? %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

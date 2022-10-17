@@ -2,14 +2,12 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg">
       <%= link_to public_root_path do %>
-        <%= image_tag 'cCYAEH!!_logo.JPG', style: "width: 220px;" %>
+        <%= image_tag 'cCYAEH!!_logo.png', style: "width: 220px;" %>
       <% end %>
       <ul class="navbar-nav ml-auto header-menu">
         <% if customer_signed_in? %>
           <!--customerログイン時-->
-          <%= link_to new_public_post_path, class: "btn-circle-3d" do %>
-            <i class="fa fa-plus"></i>
-          <% end %></div>
+          <li><%= link_to "新規投稿", new_public_post_path, class: "btn-gradient-flat-newpost" %></li>
           <li><%= link_to "マイページ", public_customer_path(current_customer.id), class: "btn-gradient-flat" %></li>
           <li><%= link_to "投稿一覧", public_posts_path, class: "btn-gradient-flat" %></li>
           <li><%= link_to "いいね一覧", public_favorites_path, class: "btn-gradient-flat" %></li>

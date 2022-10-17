@@ -1,4 +1,16 @@
 <h1>Public::Customers#show</h1>
 <p>Find me in app/views/public/customers/show.html.erb</p>
 <%= @customer.name %>
+<% if @customer.profile_image.attached? %>
+  <%= image_tag @customer.profile_image, size: "50x50" %>
+<% else %>
+  <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+<% end %>
 
+<% @customer.posts.each do |customer_post| %>
+
+  <% if customer_post.image.attached? %>
+    <div><%= image_tag customer_post.image, size: "400x400" %></div>
+  <% end %>
+
+<% end %>

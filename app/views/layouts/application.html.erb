@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Yaeh</title>
+    <title>cCYAEH!!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,7 +14,7 @@
     <!--ログインしているアカウントによってheaderを変える-->
     <% if admin_signed_in? %>
     <!--adminアカウントの時のheader-->
-      <%= render 'admin/homes/header' %>
+      <%= render 'admins/homes/header' %>
     <% else %>
     <!--ログイン前とcustomerでのログイン時-->
       <%= render 'layouts/header' %>

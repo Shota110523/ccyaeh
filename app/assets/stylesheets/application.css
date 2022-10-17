@@ -26,30 +26,32 @@
   background-image: linear-gradient(#9933ff 0%, #cc99ff 70%);
 }
 
-.header-menu li {
-  margin-right: 10px;
-}
-
-.btn-circle-3d {
+.btn-gradient-flat-newpost {
   display: inline-block;
+  padding: 0.5em 1em;
   text-decoration: none;
-  background: #fff;
-  color: #808080;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 50%;
-  text-align: center;
-  font-weight: bold;
-  overflow: hidden;
-  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.29);
-  border-bottom: solid 3px #fff;
+  color: #FFF;
+  background-image: linear-gradient(#ff773e 0%, #ffad90 100%);
   transition: .4s;
 }
 
-.btn-circle-3d:active {
-  -webkit-transform: translateY(2px);
-  transform: translateY(2px);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-  border-bottom: none;
+.btn-gradient-flat-newpost:hover {
+  background-image: linear-gradient(#ff773e 0%, #ffad90 70%);
+}
+
+.btn-gradient-flat-welcome {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: #FFF;
+  background-image: linear-gradient(#0066ff 0%, #66ccff 100%);
+  transition: .4s;
+}
+
+.btn-gradient-flat-welcome:hover {
+  background-image: linear-gradient(#0066ff 0%, #66ccff 70%);
+}
+
+.header-menu li {
+  margin-right: 20px;
 }

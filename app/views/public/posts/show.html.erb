@@ -1,9 +1,11 @@
-<%= link_to edit_public_post_path(@post.id) do %>
-  <%= image_tag @post.image, size: "500x500" %>
-<% end %>
+<%= image_tag @post.image, size: "500x500" %>
 
 <%= @post.customer.name %>
 
 <%= @post.title %>cc
 
 <%= @post.body %>
+
+<%= link_to "編集", edit_public_post_path(@post.id), class: "btn-gradient-flat" %>
+
+<%= link_to "削除", public_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-gradient-flat" %>
