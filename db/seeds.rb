@@ -8,5 +8,5 @@
 
 Admin.create!(
   email: 'test@test.com',
-  password: '123456',
+  password: ENV['SEEDS_ADMIN_PASSWORD'],
   )
