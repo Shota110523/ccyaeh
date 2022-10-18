@@ -25,6 +25,21 @@
                 <div class="card-body">
                   <p class="card-text"><%= "#{post.title}cc" if !post.title.blank? %></p>
                   <p class="card-text"><%= post.body if !post.body.blank? %></p>
+                  <p class="card-text">
+                    <% if post.favorited_by?(current_customer) %>
+                      <p>
+                        <%= link_to public_post_favorites_path(post.id), method: :delete do %>
+                          ♥<%= post.favorites.count %> いいね
+                        <% end %>
+                      </p>
+                      <% else %>
+                      <p>
+                        <%= link_to public_post_favorites_path(post.id), method: :post do %>
+                          ♡<%= post.favorites.count %> いいね
+                        <% end %>
+                      </p>
+                    <% end %>
+                  </p>
                   <p class="card-text"><%= link_to "#{post.comments.count} コメント", public_post_path(post.id) %></p>
                 </div>
               </div>

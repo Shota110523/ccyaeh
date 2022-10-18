@@ -12,6 +12,19 @@
 <% end %>
 
 <div>
+  <% if @post.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to public_post_favorites_path(@post), method: :delete do %>
+        ♥<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to public_post_favorites_path(@post), method: :post do %>
+        ♡<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
   <p>コメント件数：<%= @post.comments.count %></p>
   <% @post.comments.each do |comment| %>
     <% if comment.customer.profile_image.attached? %>

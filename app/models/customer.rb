@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
   has_one_attached :profile_image
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'GUEST') do |customer|
