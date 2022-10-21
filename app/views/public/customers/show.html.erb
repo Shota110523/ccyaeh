@@ -1,20 +1,53 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
-<%= @customer.name %>
-<% if @customer.profile_image.attached? %>
-  <%= image_tag @customer.profile_image, size: "50x50" %>
-<% else %>
-  <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
-<% end %>
-
-<% if @customer == current_customer %>
-  <p><%= link_to "プロフィール編集", edit_public_customer_path(@customer) %></p>
-<% end %>
-
-<% @customer.posts.each do |customer_post| %>
-
-  <% if customer_post.image.attached? %>
-    <div><%= image_tag customer_post.image, size: "400x400" %></div>
+<div>
+  <% if @customer.profile_image.attached? %>
+    <%= image_tag @customer.profile_image, size: "50x50" %>
+  <% else %>
+    <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
   <% end %>
+</div>
 
-<% end %>
+<div>
+  <%= @customer.name %>
+</div>
+
+<div>
+  <%= link_to "フォロー", public_customer_followings_path(@customer.id) %><%= @customer.followings.count %>
+</div>
+
+<div>
+  <%= link_to "フォロワー", public_customer_followers_path(@customer.id) %><%= @customer.followers.count %>
+</div>
+
+<div>
+  <% if current_customer != @customer %>
+    <% if current_customer.following?(@customer) %>
+      <%= link_to "フォロー外す", public_customer_relationships_path(@customer.id), method: :delete %>
+    <% else %>
+      <%= link_to "フォローする", public_customer_relationships_path(@customer.id), method: :post %>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <% if @customer.name != "GUEST" %>
+    <% if @customer == current_customer %>
+      <p><%= link_to "プロフィール編集", edit_public_customer_path(@customer) %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <% if @customer != current_customer %>
+    <p><%= link_to "お気に入り記事", favorites_public_customer_path(@customer) %></p>
+  <% end %>
+</div>
+
+<div>
+  <% @customer.posts.each do |customer_post| %>
+    <% if customer_post.image.attached? %>
+      <%= link_to public_post_path(customer_post) do %>
+        <%= image_tag customer_post.image, size: "200x200" %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

@@ -24,6 +24,12 @@ Rails.application.routes.draw do
   end
   namespace :public do
     resources :customers, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+      member do
+        get :favorites
+      end
       collection do
         get :confirm
         patch :withdraw

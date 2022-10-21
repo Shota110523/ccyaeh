@@ -2,7 +2,7 @@
 
 <%= @post.customer.name %>
 
-<%= @post.title %>cc
+<%= "#{@post.title}cc" if !@post.title.blank? %>
 
 <%= @post.body %>
 
@@ -12,19 +12,15 @@
 <% end %>
 
 <div>
-  <% if @post.favorited_by?(current_customer) %>
-    <p>
-      <%= link_to public_post_favorites_path(@post), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
+  <p>
+    <div id="favorite_buttons_<%= @post.id %>">
+      <% if current_customer.favorites.exists?(post_id: @post) %>
+        <%= render 'public/favorites/unfavorite_button', post: @post %>
+      <% else %>
+        <%= render 'public/favorites/favorite_button', post: @post %>
       <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to public_post_favorites_path(@post), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+    </div>
+  </p>
   <p>コメント件数：<%= @post.comments.count %></p>
   <% @post.comments.each do |comment| %>
     <% if comment.customer.profile_image.attached? %>
