@@ -30,7 +30,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :profile_image)
+    params.require(:customer).permit(:name, :body, :profile_image)
   end
 
   def ensure_guest_user

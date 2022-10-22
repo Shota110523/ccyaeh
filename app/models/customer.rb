@@ -29,6 +29,20 @@ class Customer < ApplicationRecord
   def following?(customer)
     followings.include?(customer)
   end
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @Customer = Customer.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @Customer = Customer.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @Customer = Customer.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @Customer = Customer.where("name LIKE?","%#{word}%")
+    else
+      @Customer = Customer.all
+    end
+  end
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'GUEST') do |customer|

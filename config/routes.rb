@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy, :followings, :followers]
   end
   namespace :public do
-    resources :searches, only: [:search]
+    get "search" => "searches#search"
   end
   namespace :public do
     resources :favorites, only: [:index, :create, :destroy]

@@ -3,9 +3,13 @@
 
   <div>
     <% if favorite.post.customer.profile_image.attached? %>
-      <%= image_tag favorite.post.customer.profile_image, size: "50x50" %>
+      <%= link_to public_customer_path(favorite.post.customer_id) do %>
+        <%= image_tag favorite.post.customer.profile_image, size: "50x50" %>
+      <% end %>
     <% else %>
-      <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+      <%= link_to public_customer_path(favorite.post.customer_id) do %>
+        <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+      <% end %>
     <% end %>
   </div>
 
@@ -23,9 +27,9 @@
 
   <div id="favorite_buttons_<%= favorite.post.id %>">
     <% if current_customer.favorites.exists?(post_id: favorite.post) %>
-      <%= render 'public/favorites/unfavorite_button', post: favorite.post %>
+      <%= render "public/favorites/unfavorite_button", post: favorite.post %>
     <% else %>
-      <%= render 'public/favorites/favorite_button', post: favorite.post %>
+      <%= render "public/favorites/favorite_button", post: favorite.post %>
     <% end %>
   </div>
 

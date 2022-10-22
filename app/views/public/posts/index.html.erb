@@ -2,49 +2,47 @@
 <div class="album">
   <div class="d-flex justify-content-center">
     <div class="container">
-      <div class="row">
-        <% @posts.each do |post| %>
-          <div class="wrap">
-            <div class="col-md-6">
-              <div class="card">
-                <div class="card-header">
-                  <% if post.customer.profile_image.attached? %>
-                    <%= link_to public_customer_path(post.customer_id) do %>
-                      <%= image_tag post.customer.profile_image, size: "50x50" %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to public_customer_path(post.customer_id) do %>
-                      <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
-                    <% end %>
+      <% @posts.each do |post| %>
+        <div class="wrap">
+          <div class="col-md-6", style="margin: 0 auto;">
+            <div class="card">
+              <div class="card-header">
+                <% if post.customer.profile_image.attached? %>
+                  <%= link_to public_customer_path(post.customer_id) do %>
+                    <%= image_tag post.customer.profile_image, size: "50x50" %>
                   <% end %>
-                  <span><%= link_to post.customer.name, public_customer_path(post.customer_id) %></span>
+                <% else %>
+                  <%= link_to public_customer_path(post.customer_id) do %>
+                    <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+                  <% end %>
+                <% end %>
+                <span><%= link_to post.customer.name, public_customer_path(post.customer_id) %></span>
+              </div>
+              <div class="card mb-4 shadow-sm">
+                <div class="card-image">
+                  <%= link_to public_post_path(post.id) do %>
+                    <%= image_tag post.image, height: "100%", width: "100%" %>
+                  <% end %>
                 </div>
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-image">
-                    <%= link_to public_post_path(post.id) do %>
-                      <%= image_tag post.image, height: "100%", width: "100%" %>
+              </div>
+              <div class="card-body">
+                <p class="card-text"><%= "#{post.title}cc" if !post.title.blank? %></p>
+                <p class="card-text"><%= post.body if !post.body.blank? %></p>
+                <p class="card-text">
+                  <div id="favorite_buttons_<%= post.id %>">
+                    <% if current_customer.favorites.exists?(post_id: post) %>
+                      <%= render 'public/favorites/unfavorite_button', post: post %>
+                    <% else %>
+                      <%= render 'public/favorites/favorite_button', post: post %>
                     <% end %>
                   </div>
-                </div>
-                <div class="card-body">
-                  <p class="card-text"><%= "#{post.title}cc" if !post.title.blank? %></p>
-                  <p class="card-text"><%= post.body if !post.body.blank? %></p>
-                  <p class="card-text">
-                    <div id="favorite_buttons_<%= post.id %>">
-                      <% if current_customer.favorites.exists?(post_id: post) %>
-                        <%= render 'public/favorites/unfavorite_button', post: post %>
-                      <% else %>
-                        <%= render 'public/favorites/favorite_button', post: post %>
-                      <% end %>
-                    </div>
-                  </p>
-                  <p class="card-text"><%= link_to "#{post.comments.count} コメント", public_post_path(post.id) %></p>
-                </div>
+                </p>
+                <p class="card-text"><%= link_to "#{post.comments.count} コメント", public_post_path(post.id) %></p>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
