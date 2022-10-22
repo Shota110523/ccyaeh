@@ -1,6 +1,6 @@
 <%= image_tag @post.image, size: "500x500" %>
 
-<%= @post.customer.name %>
+<%= link_to @post.customer.name, public_customer_path(@post.customer.id) %>
 
 <%= "#{@post.title}cc" if !@post.title.blank? %>
 

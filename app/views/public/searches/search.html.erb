@@ -27,7 +27,12 @@
     <tbody>
       <% @posts.each do |post| %>
         <tr>
-          <td><%= post.title %></td>
+          <td>
+            <%= link_to public_post_path(post) do %>
+              <%= image_tag post.image, size: "50x50" %>
+            <% end %>
+          </td>
+          <td><%= link_to post.title, public_post_path(post) %></td>
           <td><%= post.body %></td>
         </tr>
       <% end %>
