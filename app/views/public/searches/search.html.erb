@@ -9,11 +9,11 @@
           <td>
             <% if customer.profile_image.attached? %>
               <%= link_to public_customer_path(customer.id) do %>
-                <%= image_tag customer.profile_image, size: "50x50" %>
+                <%= image_tag customer.profile_image, size: "100x100" %>
               <% end %>
             <% else %>
               <%= link_to public_customer_path(customer.id) do %>
-                <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+                <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
               <% end %>
             <% end %>
             <%= link_to customer.name, public_customer_path(customer.id) %>
@@ -29,7 +29,7 @@
         <tr>
           <td>
             <%= link_to public_post_path(post) do %>
-              <%= image_tag post.image, size: "50x50" %>
+              <%= image_tag post.image, size: "100x100" %>
             <% end %>
           </td>
           <td><%= link_to "#{post.title}cc", public_post_path(post) %></td>
