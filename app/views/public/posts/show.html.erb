@@ -1,10 +1,22 @@
-<%= image_tag @post.image, size: "500x500" %>
+<div>
+  <%= link_to "戻る", public_customer_path(@post.customer.id) %>
+</div>
 
-<%= link_to @post.customer.name, public_customer_path(@post.customer.id) %>
+<div>
+  <%= image_tag @post.image, size: "500x500" %>
+</div>
 
-<%= "#{@post.title}cc" if !@post.title.blank? %>
+<div>
+  <%= link_to @post.customer.name, public_customer_path(@post.customer.id) %>
+</div>
 
-<%= @post.body %>
+<div>
+  <%= "#{@post.title}cc" if !@post.title.blank? %>
+</div>
+
+<div>
+  <%= @post.body %>
+</div>
 
 <% if @post.customer == current_customer %>
   <%= link_to "編集", edit_public_post_path(@post.id), class: "btn-gradient-flat" %>

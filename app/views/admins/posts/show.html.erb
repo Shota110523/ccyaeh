@@ -1,2 +1,32 @@
-<h1>Admins::Posts#show</h1>
-<p>Find me in app/views/admins/posts/show.html.erb</p>
+<div>
+  <%= link_to "戻る", admins_customer_path(@post.customer.id) %>
+</div>
+
+<div>
+  <%= image_tag @post.image, size: "500x500" %>
+</div>
+
+<div>
+  <%= link_to @post.customer.name, admins_customer_path(@post.customer.id) %>
+</div>
+
+<div>
+  <%= "#{@post.title}cc" if !@post.title.blank? %>
+</div>
+
+<div>
+  <%= @post.body %>
+</div>
+
+<div>
+  <p>コメント件数：<%= @post.comments.count %></p>
+    <% @post.comments.each do |comment| %>
+      <% if comment.customer.profile_image.attached? %>
+        <%= image_tag comment.customer.profile_image, size: '100x100' %>
+      <% else %>
+        <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
+      <% end %>
+      <%= comment.customer.name %>
+      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% end %>
+</div>

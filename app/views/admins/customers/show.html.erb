@@ -1,2 +1,33 @@
-<h1>Admins::Customers#show</h1>
-<p>Find me in app/views/admins/customers/show.html.erb</p>
+<div>
+  <% if @customer.profile_image.attached? %>
+    <%= image_tag @customer.profile_image, size: "50x50" %>
+  <% else %>
+    <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+  <% end %>
+</div>
+
+<div>
+  <%= @customer.name %>
+</div>
+
+<div>
+  <%= @customer.body %>
+</div>
+
+<div>
+  <%= link_to "フォロー", public_customer_followings_path(@customer.id) %><%= @customer.followings.count %>
+</div>
+
+<div>
+  <%= link_to "フォロワー", public_customer_followers_path(@customer.id) %><%= @customer.followers.count %>
+</div>
+
+<div>
+  <% @customer.posts.each do |customer_post| %>
+    <% if customer_post.image.attached? %>
+      <%= link_to admins_post_path(customer_post) do %>
+        <%= image_tag customer_post.image, size: "200x200" %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

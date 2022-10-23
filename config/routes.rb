@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show]
   end
   namespace :admins do
+    get "search" => "searches#search"
+  end
+  namespace :admins do
     root to: "homes#top"
   end
   namespace :public do

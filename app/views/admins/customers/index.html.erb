@@ -1,2 +1,23 @@
-<h1>Admins::Customers#index</h1>
-<p>Find me in app/views/admins/customers/index.html.erb</p>
+<h4>会員一覧</h4>
+
+<table>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td>
+            <% if customer.profile_image.attached? %>
+              <%= link_to admins_customer_path(customer.id) do %>
+                <%= image_tag customer.profile_image, size: "100x100" %>
+              <% end %>
+            <% else %>
+              <%= link_to admins_customer_path(customer.id) do %>
+                <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
+              <% end %>
+            <% end %>
+            <%= link_to customer.name, admins_customer_path(customer.id) %>
+        </td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

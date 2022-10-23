@@ -8,9 +8,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <li><%= link_to '会員一覧', admins_customers_path, class: 'btn border roundbed ml-5 text-white', style: 'background-color: #d2b48c;' %></li>
-          <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn border roundbed ml-5 text-white',  style: 'background-color: #d2b48c;' %></li>
+        <ul class="navbar-nav ml-auto header-menu">
+          <li><%= render "admins/searches/search" %></li>
+          <li><%= link_to '会員一覧', admins_customers_path, class: 'btn-gradient-flat', style: 'background-color: #d2b48c;' %></li>
+          <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn-gradient-flat',  style: 'background-color: #d2b48c;' %></li>
         </ul>
       </div>
     </nav>
