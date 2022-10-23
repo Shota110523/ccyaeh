@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  default_scope -> { order(created_at: :desc) }
+
   validates :image, presence: true
   # 検索方法分岐
   def self.looks(search, word)
