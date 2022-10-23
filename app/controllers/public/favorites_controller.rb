@@ -1,7 +1,5 @@
 class Public::FavoritesController < ApplicationController
   def index
-    @post = Post.find_by(params[:post_id])
-    @favorite = current_customer.favorites.find_by(post_id: @post.id)
   end
 
   def create
