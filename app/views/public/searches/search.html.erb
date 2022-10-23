@@ -32,7 +32,7 @@
               <%= image_tag post.image, size: "50x50" %>
             <% end %>
           </td>
-          <td><%= link_to post.title, public_post_path(post) %></td>
+          <td><%= link_to "#{post.title}cc", public_post_path(post) %></td>
           <td><%= post.body %></td>
         </tr>
       <% end %>
