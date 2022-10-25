@@ -7,6 +7,18 @@
 </div>
 
 <div>
+  <% if @post.customer.profile_image.attached? %>
+    <%= link_to public_customer_path(@post.customer_id) do %>
+      <%= image_tag @post.customer.profile_image, size: "50x50" %>
+    <% end %>
+  <% else %>
+    <%= link_to public_customer_path(@post.customer_id) do %>
+      <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
   <%= link_to @post.customer.name, public_customer_path(@post.customer.id) %>
 </div>
 
@@ -17,6 +29,8 @@
 <div>
   <%= @post.body %>
 </div>
+
+<%= @post.created_at.strftime('%Y/%m/%d') %>
 
 <% if @post.customer == current_customer %>
   <%= link_to "編集", edit_public_post_path(@post.id), class: "btn-gradient-flat" %>
@@ -31,25 +45,11 @@
       <% else %>
         <%= render 'public/favorites/favorite_button', post: @post %>
       <% end %>
+      <%= link_to @post.favorites.count, public_post_customer_path(@post) %>
     </div>
   </p>
-  <p>コメント件数：<%= @post.comments.count %></p>
-  <% @post.comments.each do |comment| %>
-    <% if comment.customer.profile_image.attached? %>
-      <%= image_tag comment.customer.profile_image, size: '100x100' %>
-    <% else %>
-      <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
-    <% end %>
-    <%= comment.customer.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <% if comment.customer == current_customer %>
-      <%= link_to "削除", public_post_comment_path(@post.id,comment.id), method: :delete %>
-    <% end %>
-  <% end %>
+  <p>コメント件数：<span id="comment_count"><%= @post.comments.count %></span></p>
 </div>
 <div>
-  <%= form_with model: [@post, @comment], url: public_post_comments_path(@post) do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+  <div id="comments-area"><%= render "public/comments/comment", post: @post, comment: @comment %></div>
 </div>

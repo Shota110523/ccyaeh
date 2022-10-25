@@ -16,7 +16,7 @@
                     <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
                   <% end %>
                 <% end %>
-                <span><%= link_to post.customer.name, public_customer_path(post.customer_id) %></span>
+                <span><%= link_to post.customer.name, public_customer_path(post.customer_id) %><%= post.created_at.strftime('%Y/%m/%d') %></span>
               </div>
               <div class="card mb-4 shadow-sm">
                 <div class="card-image">
@@ -30,6 +30,7 @@
                 <p class="card-text"><%= post.body if !post.body.blank? %></p>
                 <p class="card-text">
                   <div id="favorite_buttons_<%= post.id %>">
+                    <%= link_to post.favorites.count, public_post_customer_path(post) %>
                     <% if current_customer.favorites.exists?(post_id: post) %>
                       <%= render 'public/favorites/unfavorite_button', post: post %>
                     <% else %>

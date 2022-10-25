@@ -1,7 +1,6 @@
 <h2>検索結果</h2>
 
 <table class="table table-hover table-inverse">
-  <!--検索対象モデルがCustomerの時 -->
   <% if @range == "Customer" %>
     <tbody>
       <% @customers.each do |customer| %>
@@ -18,12 +17,11 @@
             <% end %>
             <%= link_to customer.name, public_customer_path(customer.id) %>
           </td>
-          <td></td>
+          <td><%= customer.body %></td>
         </tr>
       <% end %>
     </tbody>
-  <% else %>
-    <!--検索対象モデルがCustomerではない時(= 検索対象モデルがPostの時) -->
+  <% elsif @range == "PostTitle" %>
     <tbody>
       <% @posts.each do |post| %>
         <tr>
@@ -33,7 +31,19 @@
             <% end %>
           </td>
           <td><%= link_to "#{post.title}cc", public_post_path(post) %></td>
-          <td><%= post.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td>
+            <%= link_to public_post_path(post) do %>
+              <%= image_tag post.image, size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= link_to post.body, public_post_path(post) %></td>
         </tr>
       <% end %>
     </tbody>

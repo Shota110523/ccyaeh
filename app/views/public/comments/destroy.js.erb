@@ -1,0 +1,2 @@
+$("#comments-area").html("<%= j(render "public/comments/comment", post: @post, comment: @comment) %>")
+$("#comment_count").text("<%= @post.comments.count %>")

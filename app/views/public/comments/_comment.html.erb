@@ -1,0 +1,22 @@
+<% post.comments.each do |comment| %>
+  <% if comment.customer.profile_image.attached? %>
+    <%= link_to public_customer_path(comment.customer.id) do %>
+      <%= image_tag comment.customer.profile_image, size: '100x100' %>
+    <% end %>
+  <% else %>
+    <%= link_to public_customer_path(comment.customer.id) do %>
+      <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
+    <% end %>
+  <% end %>
+  <%= link_to comment.customer.name, public_customer_path(comment.customer.id) %>
+  <%= comment.created_at.strftime('%Y/%m/%d') %>
+  <%= comment.comment %>
+  <% if comment.customer == current_customer %>
+    <%= link_to "削除", public_post_comment_path(post.id, comment.id), method: :delete, remote: true, class: "btn btn-danger" %>
+  <% end %>
+<% end %>
+
+<%= form_with model: [:public, post, comment], local: false do |f| %>
+  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>

@@ -7,6 +7,18 @@
 </div>
 
 <div>
+  <% if @post.customer.profile_image.attached? %>
+    <%= link_to admins_customer_path(@post.customer_id) do %>
+      <%= image_tag @post.customer.profile_image, size: "50x50" %>
+    <% end %>
+  <% else %>
+    <%= link_to admins_customer_path(@post.customer_id) do %>
+      <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
   <%= link_to @post.customer.name, admins_customer_path(@post.customer.id) %>
 </div>
 
