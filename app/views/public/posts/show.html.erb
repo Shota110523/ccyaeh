@@ -1,9 +1,5 @@
 <div>
-  <%= link_to "戻る", public_customer_path(@post.customer.id) %>
-</div>
-
-<div>
-  <%= image_tag @post.image, size: "500x500" %>
+  <%= link_to "戻る", public_customer_path(@post.customer.id), class: "btn-gradient-flat" %>
 </div>
 
 <div>
@@ -16,10 +12,11 @@
       <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
     <% end %>
   <% end %>
+  <span><%= link_to @post.customer.name, public_customer_path(@post.customer.id) %></span>
 </div>
 
 <div>
-  <%= link_to @post.customer.name, public_customer_path(@post.customer.id) %>
+  <%= image_tag @post.image, size: "500x500" %>
 </div>
 
 <div>

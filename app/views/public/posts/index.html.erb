@@ -16,9 +16,9 @@
                     <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
                   <% end %>
                 <% end %>
-                <span><%= link_to post.customer.name, public_customer_path(post.customer_id) %><%= post.created_at.strftime('%Y/%m/%d') %></span>
+                <span><%= link_to post.customer.name, public_customer_path(post.customer_id) %></span>
               </div>
-              <div class="card mb-4 shadow-sm">
+              <div class="card mb-8 shadow-sm">
                 <div class="card-image">
                   <%= link_to public_post_path(post.id) do %>
                     <%= image_tag post.image, height: "100%", width: "100%" %>
@@ -26,19 +26,28 @@
                 </div>
               </div>
               <div class="card-body">
-                <p class="card-text"><%= "#{post.title}cc" if !post.title.blank? %></p>
-                <p class="card-text"><%= post.body if !post.body.blank? %></p>
-                <p class="card-text">
-                  <div id="favorite_buttons_<%= post.id %>">
-                    <%= link_to post.favorites.count, public_post_customer_path(post) %>
-                    <% if current_customer.favorites.exists?(post_id: post) %>
-                      <%= render 'public/favorites/unfavorite_button', post: post %>
-                    <% else %>
-                      <%= render 'public/favorites/favorite_button', post: post %>
-                    <% end %>
+                <div class="card-body2">
+                  <div >
+                    <h1><%= "#{post.title}cc" if !post.title.blank? %></h1>
                   </div>
-                </p>
-                <p class="card-text"><%= link_to "#{post.comments.count} コメント", public_post_path(post.id) %></p>
+                  <div class="card-top">
+                    <div id="favorite_buttons_<%= post.id %>">
+                      <%= link_to post.favorites.count, public_post_customer_path(post) %>
+                      <% if current_customer.favorites.exists?(post_id: post) %>
+                        <%= render 'public/favorites/unfavorite_button', post: post %>
+                      <% else %>
+                        <%= render 'public/favorites/favorite_button', post: post %>
+                      <% end %>
+                    </div>
+                    <div class="space">
+                      <%= link_to public_post_path(post.id) do %>
+                        <%= "#{post.comments.count}" %>  <i class="far fa-comment"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                <p><%= post.body if !post.body.blank? %></p>
+                <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
               </div>
             </div>
           </div>
