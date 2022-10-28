@@ -22,9 +22,6 @@ Rails.application.routes.draw do
   namespace :admins do
     get "search" => "searches#search"
   end
-  namespace :admins do
-    root to: "homes#top"
-  end
   namespace :public do
     resources :customers, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
