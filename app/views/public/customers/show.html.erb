@@ -31,7 +31,7 @@
 </div>
 
 <div>
-  <% if current_customer != @customer %>
+  <% if customer_signed_in? && current_customer != @customer %>
     <% if current_customer.following?(@customer) %>
       <%= link_to "フォロー外す", public_customer_relationships_path(@customer.id), method: :delete %>
     <% else %>
