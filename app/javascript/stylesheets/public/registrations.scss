@@ -1,3 +1,19 @@
 // Place all the styles related to the public/registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.bg_textbox {
+  border:  solid 1px;                             /* 枠線指定 */
+  display:  inline-block;                         /* インラインブロックにする */
+  padding: 10px 20px;                             /* 余白指定 */
+  background-color: rgba(255, 255, 255, 0.7);     /* 背景色指定 */
+}
+.bg_image {
+  text-align:  center;    /* 文字中央寄せ */
+  padding:  150px;        /* 余白指定 */
+  border: solid 2px;      /* 枠線指定 */
+  background-image: url("/images/topimage.png");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}

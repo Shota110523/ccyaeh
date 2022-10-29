@@ -14,16 +14,24 @@ Rails.application.routes.draw do
     post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
   namespace :admins do
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update, :destroy] do
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+      member do
+        get :favorites
+      end
+    end
   end
   namespace :admins do
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:index, :show] do
+      get "customer", to: "favorites#customer"
+    end
   end
   namespace :admins do
     get "search" => "searches#search"
   end
   namespace :public do
-    resources :customers, only: [:show, :edit, :update] do
+    resources :customers, :only => [:show, :edit, :update, :destroy] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
@@ -57,7 +65,6 @@ Rails.application.routes.draw do
   end
   namespace :public do
     root to: "homes#top"
-    get 'homes/about', as: 'about'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -20,7 +20,6 @@
           <% else %>
             <!--customerログアウト時-->
             <li><%= link_to "ゲストログイン（閲覧用）", customers_guest_sign_in_path, method: :post, class: "btn-gradient-flat"%></li>
-            <li><%= link_to "About", public_about_path, class: "btn-gradient-flat"%></li>
             <li><%= link_to "新規登録", new_customer_registration_path, class: "btn-gradient-flat"%></li>
             <li><%= link_to "ログイン", new_customer_session_path, class: "btn-gradient-flat"%></li>
           <% end %>

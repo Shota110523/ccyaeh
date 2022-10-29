@@ -1,0 +1,22 @@
+<% if customers.exists? %>
+  <% customers.each do |customer| %>
+    <tbody>
+      <tr>
+        <td>
+            <% if customer.profile_image.attached? %>
+              <%= link_to admins_customer_path(customer.id) do %>
+                <%= image_tag customer.profile_image, size: "50x50" %>
+              <% end %>
+            <% else %>
+              <%= link_to admins_customer_path(customer.id) do %>
+                <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+              <% end %>
+            <% end %>
+            <%= link_to customer.name, admins_customer_path(customer.id) %>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

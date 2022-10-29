@@ -1,17 +1,20 @@
  <%# ログイン画面　%>
+<div class="bg_image">
+  <div class="bg_textbox">
+    <%= form_with model: @customer, url: customer_session_path do |f| %>
+      <div class="field text-center">
+        <%= f.label :メールアドレス, style:"font-weight:bold; margin-right:20px; margin-top:20px;" %>
+        <%= f.email_field :email, placeholder:"sample@sample.com", autofocus: true, autocomplete: "email", size: "40" %>
+      </div>
 
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-  <div class="field text-center">
-    <%= f.label :メールアドレス, style:"font-weight:bold; margin-right:20px; margin-top:20px;" %>
-    <%= f.email_field :email, placeholder:"sample@sample.com", autofocus: true, autocomplete: "email", size: "40" %>
+      <div class="field text-center">
+        <%= f.label :パスワード, style:"font-weight:bold; margin-right:50px;" %>
+        <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
+      </div>
+      <br>
+      <div class="actions text-center">
+        <%= f.submit "ログイン", class: "btn-gradient-flat-welcome", style:"font-weight:bold" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field text-center">
-    <%= f.label :パスワード, style:"font-weight:bold; margin-right:50px;" %>
-    <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
-  </div>
-  <br>
-  <div class="actions text-center">
-    <%= f.submit "ログイン", class: "btn-gradient-flat-welcome", style:"font-weight:bold" %>
-  </div>
-<% end %>
+</div>

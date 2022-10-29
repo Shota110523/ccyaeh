@@ -1,0 +1,19 @@
+<% @favorites.each do |favorite| %>
+
+  <div>
+    <% if favorite.customer.profile_image.attached? %>
+      <%= link_to admins_customer_path(favorite.customer_id) do %>
+        <%= image_tag favorite.customer.profile_image, size: "50x50" %>
+      <% end %>
+    <% else %>
+      <%= link_to admins_customer_path(favorite.customer_id) do %>
+        <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to favorite.customer.name, admins_customer_path(favorite.customer_id) %>
+  </div>
+
+<% end %>

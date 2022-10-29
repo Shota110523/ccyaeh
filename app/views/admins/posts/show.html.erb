@@ -31,6 +31,10 @@
 </div>
 
 <div>
+  <%= link_to @post.favorites.count, admins_post_customer_path(@post) %>
+</div>
+
+<div>
   <p>コメント件数：<%= @post.comments.count %></p>
     <% @post.comments.each do |comment| %>
       <% if comment.customer.profile_image.attached? %>

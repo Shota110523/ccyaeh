@@ -4,9 +4,13 @@
       <tr>
         <td>
             <% if customer.profile_image.attached? %>
-              <%= image_tag customer.profile_image, size: "50x50" %>
+              <%= link_to public_customer_path(customer.id) do %>
+                <%= image_tag customer.profile_image, size: "50x50" %>
+              <% end %>
             <% else %>
-              <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+              <%= link_to public_customer_path(customer.id) do %>
+                <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+              <% end %>
             <% end %>
             <%= link_to customer.name, public_customer_path(customer.id) %>
         </td>

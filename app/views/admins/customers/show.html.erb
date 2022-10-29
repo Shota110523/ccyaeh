@@ -15,11 +15,11 @@
 </div>
 
 <div>
-  <%= link_to "フォロー", public_customer_followings_path(@customer.id) %><%= @customer.followings.count %>
+  <%= link_to "フォロー", admins_customer_followings_path(@customer.id) %><%= @customer.followings.count %>
 </div>
 
 <div>
-  <%= link_to "フォロワー", public_customer_followers_path(@customer.id) %><%= @customer.followers.count %>
+  <%= link_to "フォロワー", admins_customer_followers_path(@customer.id) %><%= @customer.followers.count %>
 </div>
 
 <div>

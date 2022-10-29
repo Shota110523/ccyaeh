@@ -16,6 +16,10 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 import "../stylesheets/public/posts"
 import "../stylesheets/public/homes"
+import "../stylesheets/public/sessions"
+import "../stylesheets/public/customers"
+import "../stylesheets/admins/sessions"
+import "../stylesheets/admins/customers"
 
 Rails.start()
 Turbolinks.start()
