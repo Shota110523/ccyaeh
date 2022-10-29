@@ -37,7 +37,7 @@
 <div>
   <p>
     <div id="favorite_buttons_<%= @post.id %>">
-      <% if current_customer.favorites.exists?(post_id: @post) %>
+      <% if customer_signed_in? && current_customer.favorites.exists?(post_id: @post) %>
         <%= render 'public/favorites/unfavorite_button', post: @post %>
       <% else %>
         <%= render 'public/favorites/favorite_button', post: @post %>
