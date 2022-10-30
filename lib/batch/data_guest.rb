@@ -8,5 +8,8 @@ class Batch::DataGuest
     Rails.logger.info("----------------------------------------")
     customer.posts.destroy_all
     customer.comments.destroy_all
+    customer.favorites.destroy_all
+    customer.relationships.destroy_all
+    customer.reverse_of_relationships.destroy_all
   end
 end
