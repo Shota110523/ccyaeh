@@ -3,6 +3,11 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    if @customer.status == 'nonreleased' && @customer != current_customer
+      respond_to do |format|
+        format.html { redirect_to public_posts_path, notice: 'このページにはアクセスできません' }
+      end
+    end
   end
 
   def edit
@@ -28,14 +33,17 @@ class Public::CustomersController < ApplicationController
     @favorite_posts = Post.find(favorites)
   end
 
-# 　def withdraw
-#     @customer = current_customer
-#     # is_deletedカラムをtrueに変更することで削除フラグを立てる
-#     @customer.update(is_deleted: true)
-#     reset_session
-#     flash[:notice] = "退会処理を実行いたしました"
-#     redirect_to root_path
-#   end
+  def release
+    @customer = Customer.find(params[:customer_id])
+    @customer.released! unless @customer.released?
+    redirect_to edit_public_customer_path(@customer), notice: 'このアカウントを公開しました'
+  end
+
+  def nonrelease
+    @customer = Customer.find(params[:customer_id])
+    @customer.nonreleased! unless @customer.nonreleased?
+    redirect_to edit_public_customer_path(@customer), notice: 'このアカウントを非公開にしました'
+  end
 
   private
 

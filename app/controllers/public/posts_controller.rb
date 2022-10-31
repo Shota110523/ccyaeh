@@ -5,6 +5,8 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    #投稿も非公開にする場合
+    #@posts = Post.left_joins(:customer).where(customer: { status: :released })
   end
 
   def show

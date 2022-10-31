@@ -1,4 +1,9 @@
 <h2>プロフィール編集</h2>
+<% if @customer.released? %>
+  <%= link_to '非公開にする',nonrelease_public_customers_path(@customer), method: :patch%>
+<% else %>
+  <%= link_to '公開する',release_public_customers_path(@customer), method: :patch%>
+<% end %>
 <%= form_with model: @customer, url: public_customer_path, method: :patch do |f| %>
   <div class="form-group">
     <h6>プロフィール画像</h6>

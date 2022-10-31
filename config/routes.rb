@@ -40,7 +40,8 @@ Rails.application.routes.draw do
       end
       collection do
         get :confirm
-        patch :withdraw
+        patch 'release/:customer_id' => 'customers#release', as: 'release'
+        patch 'nonrelease/:customer_id' => 'customers#nonrelease', as: 'nonrelease'
       end
     end
     get 'customers/confirm'

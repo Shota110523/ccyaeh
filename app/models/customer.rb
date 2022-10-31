@@ -17,6 +17,8 @@ class Customer < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  enum status:{nonreleased: 0, released: 1}
+
   # フォローしたときの処理
   def follow(customer_id)
     relationships.create(followed_id: customer_id)
