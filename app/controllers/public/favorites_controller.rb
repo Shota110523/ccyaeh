@@ -11,6 +11,11 @@ class Public::FavoritesController < ApplicationController
     @favorite = current_customer.favorites.new(post_id: @post.id)
     @favorite.save
     #redirect_to request.referer
+    #通知の作成
+    @post.create_notification_by(current_customer)
+    respond_to do |format|
+    format.html {redirect_to request.referrer}
+    format.js
   end
 
   def destroy

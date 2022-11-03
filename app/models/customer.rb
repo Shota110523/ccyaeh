@@ -18,6 +18,9 @@ class Customer < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   enum status:{nonreleased: 0, released: 1}
+  
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   # フォローしたときの処理
   def follow(customer_id)
@@ -49,6 +52,17 @@ class Customer < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'GUEST') do |customer|
       customer.password = SecureRandom.urlsafe_base64
+    end
+  end
+  #フォロー時の通知
+  def create_notification_follow!(current_customer)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_customer.id, id, 'follow'])
+    if temp.blank?
+      notification = current_customer.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
     end
   end
 end

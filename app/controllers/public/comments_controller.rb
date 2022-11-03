@@ -6,6 +6,11 @@ class Public::CommentsController < ApplicationController
     comment.save
     @comment = Comment.new
     #redirect_to public_post_path(@post.id)
+    if @comment.save
+    #通知の作成
+      @comment_post.create_notification_comment!(current_customer, @comment.id)
+      render :index
+    end
   end
 
   def destroy

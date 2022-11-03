@@ -56,7 +56,6 @@ Rails.application.routes.draw do
   namespace :public do
     resources :favorites, only: [:index, :create, :destroy]
   end
-
   namespace :public do
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
@@ -64,6 +63,9 @@ Rails.application.routes.draw do
       get "customer", to: "favorites#customer"
     end
   end
+  namespace :public do
+    resources :notifications, only: :index
+  
   namespace :public do
     root to: "homes#top"
   end
