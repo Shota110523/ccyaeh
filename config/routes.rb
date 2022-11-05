@@ -64,8 +64,10 @@ Rails.application.routes.draw do
     end
   end
   namespace :public do
-    resources :notifications, only: :index
-  
+    resources :notifications, only: [:index] do
+      delete "destroy_all", to: "notifications#destroy_all"
+    end
+  end
   namespace :public do
     root to: "homes#top"
   end

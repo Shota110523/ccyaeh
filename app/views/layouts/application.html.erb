@@ -18,6 +18,12 @@
     <% else %>
     <!--ログイン前とcustomerでのログイン時-->
       <%= render 'layouts/header' %>
+      <% if customer_signed_in? && unchecked_notifications.any? %>
+        <i class="fa fa-circle" style="color: gold;"></i>
+      <% end %>
+      <li>
+        <%= link_to "NOTICE", public_notifications_path, class: "btn-default" %>
+      </li>
     <% end %>
     <main class="mb-auto">
     <%= yield %>

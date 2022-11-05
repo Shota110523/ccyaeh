@@ -8,9 +8,9 @@ class Post < ApplicationRecord
 
   validates :image, presence: true
   validates :title, presence: true
-  
+
   has_many :notifications, dependent: :destroy
-  
+
   def self.looks_title(search, word)
     if search == "perfect_match"
       @post = Post.where("title LIKE?","#{word}")
@@ -42,7 +42,7 @@ class Post < ApplicationRecord
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
-  
+
   def create_notification_by(current_customer)
     notification = current_customer.active_notifications.new(
       post_id: id,
@@ -76,5 +76,5 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
+
 end

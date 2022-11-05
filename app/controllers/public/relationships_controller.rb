@@ -1,10 +1,11 @@
 class Public::RelationshipsController < ApplicationController
 
   def create
+    @customer = Customer.find(params[:customer_id])
     current_customer.follow(params[:customer_id])
-    redirect_to request.referer
     #通知の作成
 	  @customer.create_notification_follow!(current_customer)
+	  redirect_to request.referer
   end
 
   def destroy
