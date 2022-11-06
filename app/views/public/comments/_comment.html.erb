@@ -1,11 +1,11 @@
 <% post.comments.each do |comment| %>
   <% if comment.customer.profile_image.attached? %>
     <%= link_to public_customer_path(comment.customer.id) do %>
-      <%= image_tag comment.customer.profile_image, size: '50x50' %>
+      <%= image_tag comment.customer.profile_image, class: "rounded-circle", size: '50x50' %>
     <% end %>
   <% else %>
     <%= link_to public_customer_path(comment.customer.id) do %>
-      <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+      <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
     <% end %>
   <% end %>
   <%= link_to comment.customer.name, public_customer_path(comment.customer.id) %>

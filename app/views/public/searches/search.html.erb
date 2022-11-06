@@ -8,11 +8,11 @@
           <td>
             <% if customer.profile_image.attached? %>
               <%= link_to public_customer_path(customer.id) do %>
-                <%= image_tag customer.profile_image, size: "100x100" %>
+                <%= image_tag customer.profile_image, class: "rounded-circle", size: "100x100" %>
               <% end %>
             <% else %>
               <%= link_to public_customer_path(customer.id) do %>
-                <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
+                <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "100x100" %>
               <% end %>
             <% end %>
             <%= link_to customer.name, public_customer_path(customer.id) %>

@@ -4,11 +4,11 @@
   <div>
     <% if favorite.post.customer.profile_image.attached? %>
       <%= link_to public_customer_path(favorite.post.customer_id) do %>
-        <%= image_tag favorite.post.customer.profile_image, size: "50x50" %>
+        <%= image_tag favorite.post.customer.profile_image, class: "rounded-circle", size: "50x50" %>
       <% end %>
     <% else %>
       <%= link_to public_customer_path(favorite.post.customer_id) do %>
-        <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+        <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
       <% end %>
     <% end %>
   </div>

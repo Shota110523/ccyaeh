@@ -1,16 +1,16 @@
 <% if customer_signed_in? && @customer == current_customer %>
   <% unless @customer.email == "test@test.com" then %>
-     <div class="mt-3">
-        <%= link_to "退会する", public_customer_path(current_customer.id), class: "destroy-customer btn-gradient-flat-customer-destroy", method: :delete, "data-confirm" => "本当に退会しますか？" %>
-     </div>
+    <div class="mt-3">
+      <%= link_to "退会する", public_customer_path(current_customer.id), class: "destroy-customer btn-gradient-flat-customer-destroy", method: :delete, "data-confirm" => "本当に退会しますか？" %>
+    </div>
   <% end %>
 <% end %>
 
 <div>
   <% if @customer.profile_image.attached? %>
-    <%= image_tag @customer.profile_image, size: "50x50" %>
+    <%= image_tag @customer.profile_image, class: "rounded-circle", size: "50x50" %>
   <% else %>
-    <%= image_tag asset_path('no_image.jpg'), size: "50x50" %>
+    <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
   <% end %>
 </div>
 
