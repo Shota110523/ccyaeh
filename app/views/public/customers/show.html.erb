@@ -6,7 +6,7 @@
   <% end %>
 <% end %>
 <div class="container">
-  <header class="row">
+  <header class="row line1 justify-content-center">
     <div class="profile_image">
       <% if @customer.profile_image.attached? %>
         <%= image_tag @customer.profile_image, class: "rounded-circle", size: "150x150" %>
@@ -23,9 +23,11 @@
         <% end %>
       </div>
 
-      <div class="">
-        <%= link_to "フォロワー", public_customer_followers_path(@customer.id) %><%= @customer.followers.count %>
-        <%= link_to "フォロー", public_customer_followings_path(@customer.id) %><%= @customer.followings.count %>
+      <div>
+        <p>
+          <%= link_to "フォロワー", public_customer_followers_path(@customer.id) %><%= @customer.followers.count %>
+          <%= link_to "フォロー", public_customer_followings_path(@customer.id), style: "margin-left: 10px;" %><%= @customer.followings.count %>
+        </p>
       </div>
 
       <div>
@@ -50,16 +52,14 @@
       </div>
     </div>
   </header>
-    <div class="row">
-      <div class="album photo">
-        <% @customer.posts.each do |customer_post| %>
-          <% if customer_post.image.attached? %>
-            <%= link_to public_post_path(customer_post) do %>
-              <%= image_tag customer_post.image, size: "200x200" %>
-            <% end %>
+    <div class="row line2 justify-content-center">
+      <% @customer.posts.each do |customer_post| %>
+        <% if customer_post.image.attached? %>
+          <%= link_to public_post_path(customer_post) do %>
+            <div style="margin: 1px"><%= image_tag customer_post.image, size: "370x370" %></div>
           <% end %>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
