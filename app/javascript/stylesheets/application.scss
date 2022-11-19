@@ -14,45 +14,6 @@
   border-color: #ffffff;
 }
 
-.btn-gradient-flat {
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  color: #FFF;
-  background-image: linear-gradient(#9933ff 0%, #cc99ff 100%);
-  transition: .4s;
-}
-
-.btn-gradient-flat:hover {
-  background-image: linear-gradient(#9933ff 0%, #cc99ff 70%);
-}
-
-.btn-gradient-flat-newpost {
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  color: #FFF;
-  background-image: linear-gradient(#ff773e 0%, #ffad90 100%);
-  transition: .4s;
-}
-
-.btn-gradient-flat-newpost:hover {
-  background-image: linear-gradient(#ff773e 0%, #ffad90 70%);
-}
-
-.btn-gradient-flat-search {
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  color: #FFF;
-  background-image: linear-gradient(#00ecff 0%, #00f9a9 100%);
-  transition: .4s;
-}
-
-.btn-gradient-flat-search:hover {
-  background-image: linear-gradient(#00ecff 0%, #00f9a9 70%);
-}
-
 .btn-gradient-flat-welcome {
   display: inline-block;
   padding: 0.5em 1em;
@@ -64,6 +25,24 @@
 
 .btn-gradient-flat-welcome:hover {
   background-image: linear-gradient(#0066ff 0%, #66ccff 70%);
+}
+
+.btn-square-so-pop-search {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00cc00;/*色*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+  border: solid 2px #008800;/*線色*/
+}
+
+.btn-square-so-pop-search:active {
+  /*押したとき*/
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 .header-menu {
@@ -114,4 +93,14 @@
 .size {
   font-size: 40px;
   color: #ffffff;
+}
+
+.header-font {
+  font-weight: bolder;
+  color: #ffffff;
+}
+
+.font {
+  font-weight: bolder;
+  color: #000000;
 }

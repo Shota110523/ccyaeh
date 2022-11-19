@@ -1,15 +1,15 @@
 <div class="container">
-  <header class="row line1 justify-content-center">
+  <header class="row header-main line1 justify-content-center">
     <div class="withdraw">
       <% if customer_signed_in? && @customer == current_customer %>
         <% unless @customer.email == "test@test.com" then %>
           <div>
-            <%= link_to "退会する", public_customer_path(current_customer.id), class: "destroy-customer btn-gradient-flat-customer-destroy", method: :delete, "data-confirm" => "本当に退会しますか？" %>
+            <%= link_to "退会する", public_customer_path(current_customer.id), class: "destroy-customer btn-square-so-pop-customer-destroy", method: :delete, "data-confirm" => "本当に退会しますか？" %>
           </div>
         <% end %>
       <% end %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 profile">
       <div class="row">
         <div>
           <% if @customer.profile_image.attached? %>
@@ -19,20 +19,23 @@
           <% end %>
         </div>
         <div class="profile-block">
-          <div>
+          <div class="profile-edit">
             <% if @customer.name != "GUEST" %>
               <% if @customer == current_customer %>
-                <p><%= link_to "プロフィール編集", edit_public_customer_path(@customer) %></p>
+                <%= link_to edit_public_customer_path(@customer), class: "btn-square-so-pop btn-block" do %>
+                  <i class="fas fa-cog"></i>
+                  <span>プロフィール編集</span>
+                <% end %>
               <% end %>
             <% end %>
           </div>
           <div>
-            <p>
-              <%= link_to "フォロワー", public_customer_followers_path(@customer.id) %><%= @customer.followers.count %>
-              <%= link_to "フォロー", public_customer_followings_path(@customer.id), style: "margin-left: 10px;" %><%= @customer.followings.count %>
+            <p class="font">
+              <%= link_to "フォロワー", public_customer_followers_path(@customer.id), class:"font" %><%= "#{@customer.followers.count}人" %>
+              <%= link_to "フォロー", public_customer_followings_path(@customer.id), class:"font", style: "margin-left: 10px;" %><%= "#{@customer.followings.count}人" %>
             </p>
           </div>
-          <div>
+          <div class="font">
             <% if customer_signed_in? && current_customer != @customer %>
               <% if current_customer.following?(@customer) %>
                 <p>
@@ -47,7 +50,7 @@
           </div>
           <div>
             <% if @customer != current_customer %>
-              <p>
+              <p class="font">
                 <%= link_to "お気に入り記事", favorites_public_customer_path(@customer) %>
               </p>
             <% end %>

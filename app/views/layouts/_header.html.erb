@@ -15,26 +15,26 @@
             <li>
               <div class="plus"><%= link_to new_public_post_path do %>
                 <i class="far fa-plus-square size"></i></div>
-                <div style="color: #ffffff;">新規投稿</div>
+                <div class="header-font">新規投稿</div>
               <% end %>
             </li>
             <li>
               <% if current_customer.profile_image.attached? %>
                 <div class="circle"><%= link_to public_customer_path(current_customer) do %>
                   <%= image_tag current_customer.profile_image, class: "rounded-circle", size: "40x40" %></div>
-                  <div style="color: #ffffff;">マイページ</div>
+                  <div class="header-font">マイページ</div>
                 <% end %>
               <% else %>
                 <div class="circle"><%= link_to public_customer_path(current_customer) do %>
                   <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "40x40" %></div>
-                  <div style="color: #ffffff;">マイページ</div>
+                  <div class="header-font">マイページ</div>
                 <% end %>
               <% end %>
             </li>
             <li>
               <div class="home"><%= link_to public_posts_path do %>
                 <i class="fas fa-home size"></i></div>
-                <div style="color: #ffffff;">ホーム</div>
+                <div class="header-font">ホーム</div>
               <% end %>
             </li>
             <% if customer_signed_in? && unchecked_notifications.any? %>
@@ -43,19 +43,19 @@
             <li>
               <%= link_to public_notifications_path do %>
                 <i class="fas fa-bell size"></i>
-                <div class="bell" style="color: #ffffff;">通知</div>
+                <div class="bell header-font">通知</div>
               <% end %>
             </li>
             <li>
               <div class="heart"><%= link_to public_favorites_path do %>
                 <i class="fas fa-heart size"></i></div>
-                <div style="color: #ffffff;">いいね一覧</div>
+                <div class="header-font">いいね一覧</div>
               <% end %>
             </li>
             <li>
               <div class="out"><%= link_to destroy_customer_session_path, method: :delete do %>
                 <i class="fas fa-sign-out-alt size"></i></div>
-                <div style="color: #ffffff;">ログアウト</div>
+                <div class="header-font">ログアウト</div>
               <% end %>
             </li>
           <% else %>

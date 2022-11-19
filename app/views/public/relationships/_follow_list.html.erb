@@ -2,7 +2,7 @@
   <% customers.each do |customer| %>
     <tbody>
       <tr>
-        <td>
+        <td class="font">
             <% if customer.profile_image.attached? %>
               <%= link_to public_customer_path(customer.id) do %>
                 <%= image_tag customer.profile_image, class: "rounded-circle", size: "50x50" %>
@@ -14,7 +14,7 @@
             <% end %>
             <%= link_to customer.name, public_customer_path(customer.id) %>
         </td>
-        <td>
+        <td class="font">
           <% if customer_signed_in? && current_customer != customer %>
             <% if current_customer.following?(customer) %>
               <%= link_to "フォロー外す", public_customer_relationships_path(customer.id), method: :delete %>
