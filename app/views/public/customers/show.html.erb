@@ -1,31 +1,31 @@
 <div class="container">
   <header class="row header-main line1 justify-content-center">
-    <div class="withdraw">
-      <% if customer_signed_in? && @customer == current_customer %>
-        <% unless @customer.email == "test@test.com" then %>
-          <div>
-            <%= link_to "退会する", public_customer_path(current_customer.id), class: "destroy-customer btn-square-so-pop-customer-destroy", method: :delete, "data-confirm" => "本当に退会しますか？" %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="col-md-6 profile">
-      <div class="row">
-        <div>
+    <div class="col-md-10 profile">
+      <div class="row justify-content-center">
+        <div class="col-md-5 text-right">
           <% if @customer.profile_image.attached? %>
             <%= image_tag @customer.profile_image, class: "rounded-circle", size: "150x150" %>
           <% else %>
             <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "150x150" %>
           <% end %>
         </div>
-        <div class="profile-block">
-          <div class="profile-edit">
+        <div class="profile-block col-md-7">
+          <div class="profile-edit row">
             <% if @customer.name != "GUEST" %>
               <% if @customer == current_customer %>
-                <%= link_to edit_public_customer_path(@customer), class: "btn-square-so-pop btn-block" do %>
-                  <i class="fas fa-cog"></i>
-                  <span>プロフィール編集</span>
-                <% end %>
+                <div>
+                  <%= link_to edit_public_customer_path(@customer), class: "btn-square-so-pop" do %>
+                    <i class="fas fa-cog"></i>
+                    <span>プロフィール編集</span>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+            <% if customer_signed_in? && @customer == current_customer %>
+              <% unless @customer.email == "test@test.com" then %>
+                <div class="ml-2">
+                  <%= link_to "退会する", public_customer_path(current_customer.id), class: "destroy-customer btn-square-so-pop-customer-destroy", method: :delete, "data-confirm" => "退会したら全てのデータが削除されます。本当に退会しますか？" %>
+                </div>
               <% end %>
             <% end %>
           </div>
@@ -57,7 +57,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="customer-info">
         <p class="name"><%= @customer.name %></p>
         <p><%= @customer.body %></p>
       </div>

@@ -58,6 +58,7 @@
 
 .profile-edit {
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .profile-block {
@@ -65,11 +66,12 @@
   align-items: self-start;
   justify-content: center;
   flex-flow: column;
-  padding-left: 100px;
+  padding-left: 20px;
+  width: 50%;
 }
 
-.withdraw {
-  margin-right: 130px;
+.customer-info {
+  padding-left: 220px;
 }
 
 .name {
