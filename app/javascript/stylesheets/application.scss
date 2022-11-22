@@ -14,7 +14,20 @@
   border-color: #ffffff;
 }
 
-.btn-gradient-flat-welcome {
+.btn-gradient-flat {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: #FFF;
+  background-image: linear-gradient(#9900ff 0%, #c299ff 100%);
+  transition: .4s;
+}
+
+.btn-gradient-flat:hover {
+  background-image: linear-gradient(#9900ff 0%, #c299ff 70%);
+}
+
+.btn-gradient-flat-login {
   display: inline-block;
   padding: 0.5em 1em;
   text-decoration: none;
@@ -23,7 +36,7 @@
   transition: .4s;
 }
 
-.btn-gradient-flat-welcome:hover {
+.btn-gradient-flat-login:hover {
   background-image: linear-gradient(#0066ff 0%, #66ccff 70%);
 }
 
