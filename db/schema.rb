@@ -94,11 +94,6 @@ ActiveRecord::Schema.define(version: 2022_11_03_113921) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "body"
