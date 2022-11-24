@@ -51,6 +51,10 @@
   border-bottom: solid 0.7px #000000;
 }
 
+.profile {
+  margin-left: 46px;
+}
+
 .customer-show-posts {
   margin-bottom: 50px;
   padding-bottom: 10px
@@ -58,7 +62,12 @@
 
 .profile-edit {
   margin-bottom: 16px;
+  margin-left: initial;
   width: 100%;
+}
+
+.withdraw {
+  margin-left: 18px;
 }
 
 .profile-block {
@@ -66,12 +75,13 @@
   align-items: self-start;
   justify-content: center;
   flex-flow: column;
-  padding-left: 20px;
+  padding-left: 60px;
   width: 50%;
 }
 
 .customer-info {
   padding-left: 220px;
+  margin-right: 260px
 }
 
 .name {

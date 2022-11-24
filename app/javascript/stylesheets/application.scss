@@ -63,31 +63,12 @@
 }
 
 .header-menu li {
-  margin-right: 20px;
-}
-
-.plus {
+  margin-right: 15px;
   margin-left: 15px;
 }
 
-.circle {
-  margin-left: 18px;
-}
-
-.home {
-  margin-left: 1px;
-}
-
-.bell {
-  margin-left: 1px;
-}
-
-.heart {
-  margin-left: 20px;
-}
-
-.out {
-  margin-left: 20px;
+.icon {
+  text-align: center;
 }
 
 .footer-inside {
@@ -110,6 +91,8 @@
 
 .header-font {
   font-weight: bolder;
+  font-size: small;
+  text-align: center;
   color: #ffffff;
 }
 
