@@ -17,7 +17,7 @@
                       <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
                     <% end %>
                   <% end %>
-                  <span><%= link_to post.customer.name, public_customer_path(post.customer_id) %></span>
+                  <span class="name-space"><%= link_to post.customer.name, public_customer_path(post.customer_id), class: "font" %></span>
                 </div>
                 <div class="card mb-8 shadow-sm">
                   <div class="card-image">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="card-body">
                   <div class="card-body2">
-                    <div >
+                    <div>
                       <h1><%= "#{post.title}cc" %></h1>
                     </div>
                     <div class="card-top">

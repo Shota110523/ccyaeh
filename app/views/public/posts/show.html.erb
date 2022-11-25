@@ -1,52 +1,59 @@
 <div>
   <%= link_to "戻る", public_customer_path(@post.customer.id), class: "btn-gradient-flat" %>
 </div>
-
-<div>
-  <% if @post.customer.profile_image.attached? %>
-    <%= link_to public_customer_path(@post.customer_id) do %>
-      <%= image_tag @post.customer.profile_image, class: "rounded-circle", size: "50x50" %>
-    <% end %>
-  <% else %>
-    <%= link_to public_customer_path(@post.customer_id) do %>
-      <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
-    <% end %>
-  <% end %>
-  <span><%= link_to @post.customer.name, public_customer_path(@post.customer.id) %></span>
-</div>
-
-<div>
-  <%= image_tag @post.image, size: "500x500" %>
-</div>
-
-<div>
-  <%= "#{@post.title}cc" if !@post.title.blank? %>
-</div>
-
-<div>
-  <%= @post.body %>
-</div>
-
-<%= @post.created_at.strftime('%Y/%m/%d') %>
-
-<% if @post.customer == current_customer %>
-  <%= link_to "編集", edit_public_post_path(@post.id), class: "btn-gradient-flat" %>
-  <%= link_to "削除", public_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-gradient-flat" %>
-<% end %>
-
-<div>
-  <p>
-    <div id="favorite_buttons_<%= @post.id %>">
-      <% if customer_signed_in? && current_customer.favorites.exists?(post_id: @post) %>
-        <%= render 'public/favorites/unfavorite_button', post: @post %>
-      <% else %>
-        <%= render 'public/favorites/favorite_button', post: @post %>
-      <% end %>
-      <%= link_to @post.favorites.count, public_post_customer_path(@post) %>
+<div class="">
+  <div class="row col-md-12", style="margin: 0 auto;">
+    <%= image_tag @post.image, size: "500x500" %>
+    <div class="col-md-6", style="padding-right: 0;">
+      <div class="card">
+        <div class="card-header">
+          <% if @post.customer.profile_image.attached? %>
+            <%= link_to public_customer_path(@post.customer_id) do %>
+              <%= image_tag @post.customer.profile_image, class: "rounded-circle", size: "50x50" %>
+            <% end %>
+          <% else %>
+            <%= link_to public_customer_path(@post.customer_id) do %>
+              <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
+            <% end %>
+          <% end %>
+          <span class="name-space"><%= link_to @post.customer.name, public_customer_path(@post.customer.id), class: "font" %></span>
+          <span class="name-space"><%= @post.created_at.strftime('%Y/%m/%d') %></span>
+          <% if @post.customer == current_customer %>
+            <span class="name-space"><%= link_to "編集", edit_public_post_path(@post.id), class: "btn-gradient-flat" %></span>
+            <span class="name-space"><%= link_to "削除", public_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-gradient-flat" %></span>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div class="card-body2">
+            <div>
+              <h1><%= "#{@post.title}cc" %></h1>
+            </div>
+            <div class="card-top">
+              <span id="favorite_buttons_<%= @post.id %>">
+                <% if customer_signed_in? && current_customer.favorites.exists?(post_id: @post) %>
+                  <%= render 'public/favorites/unfavorite_button', post: @post %>
+                <% else %>
+                  <%= render 'public/favorites/favorite_button', post: @post %>
+                <% end %>
+                <%= link_to @post.favorites.count, public_post_customer_path(@post) %>
+              </span>
+              <span class="space">コメント件数：<span id="comment_count"><%= "#{@post.comments.count}人" %></span></span>
+            </div>
+          </div>
+          <div>
+            <%= @post.body if !@post.body.blank? %>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="comments-area"><%= render "public/comments/comment", post: @post, comment: @comment %></div>
+        </div>
+        <div class="card-footer">
+          <%= form_with model: [:public, @post, @comment], local: false do |f| %>
+            <%= f.text_area :comment, cols: "73", placeholder: "コメントを追加" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </p>
-  <p>コメント件数：<span id="comment_count"><%= @post.comments.count %></span></p>
-</div>
-<div>
-  <div id="comments-area"><%= render "public/comments/comment", post: @post, comment: @comment %></div>
+  </div>
 </div>

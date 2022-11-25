@@ -1,17 +1,30 @@
-<%= form_with model: @post, url: public_post_path, method: :patch do |f| %>
-
-  <div class="form-group">
-    <h6>画像</h6>
-    <%= f.file_field :image, accept: "image/*" %>
+<% if @post.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
-  <div class="form-group">
-    <h6>排気量</h6>
-    <%= f.text_field :title %>cc
-  </div>
-  <div class="form-group">
-    <h6>キャプション</h6>
-    <%= f.text_area :body %>
-  </div>
-  <%= f.submit '変更保存' %>
-
 <% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <%= form_with model: @post, url: public_post_path, method: :patch do |f| %>
+        <div class="form-group">
+          <h6>画像</h6>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+        <div class="form-group">
+          <h6>排気量</h6>
+          <%= f.text_field :title %>cc
+        </div>
+        <div class="form-group">
+          <h6>キャプション</h6>
+          <%= f.text_area :body, size: "50x10", placeholder: "※メーカーや車種名を記載すると検索し易くなるよ！" %>
+        </div>
+        <%= f.submit '変更保存', class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>
