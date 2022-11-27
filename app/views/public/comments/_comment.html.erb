@@ -1,21 +1,25 @@
 <% post.comments.each do |comment| %>
-  <div>
+  <div class="row comment-group">
     <% if comment.customer.profile_image.attached? %>
       <%= link_to public_customer_path(comment.customer.id) do %>
-        <%= image_tag comment.customer.profile_image, class: "rounded-circle", size: '50x50' %>
+        <%= image_tag comment.customer.profile_image, class: "rounded-circle", size: '35x35' %>
       <% end %>
     <% else %>
       <%= link_to public_customer_path(comment.customer.id) do %>
-        <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
+        <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "35x35" %>
       <% end %>
     <% end %>
-    <span class="name-space"><%= link_to comment.customer.name, public_customer_path(comment.customer.id), class: "font" %></span>
-    <span class="name-space"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
-    <% if comment.customer == current_customer %>
-      <span class="name-space"><%= link_to "コメント削除", public_post_comment_path(post.id, comment.id), method: :delete, remote: true, class: "btn btn-danger" %></span>
-    <% end %>
+    <div class="comment-block">
+      <div>
+        <span class="pp name-space"><%= link_to comment.customer.name, public_customer_path(comment.customer.id), class: "font" %></span>
+        <span class="pp name-space"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+        <% if comment.customer == current_customer %>
+          <span class="pp name-space"><%= link_to "コメント削除", public_post_comment_path(post.id, comment.id), method: :delete, remote: true, class: "btn btn-danger" %></span>
+        <% end %>
+      </div>
+      <span class="comment">
+        <%= comment.comment %>
+      </span>
+    </div>
   </div>
-
-  <%= comment.comment %>
-
 <% end %>

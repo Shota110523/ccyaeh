@@ -77,8 +77,10 @@
 
 .notice {
   margin-bottom: 20px;
+  margin-left: 3px;
   transform: translate(-100%);
   color: lightgreen;
+  position: absolute;
 }
 
 .footer-inside {
@@ -109,4 +111,8 @@
 .font {
   font-weight: bolder;
   color: #000000;
+}
+
+.card-show-height {
+  height: 592px;
 }

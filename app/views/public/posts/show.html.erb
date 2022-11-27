@@ -1,12 +1,14 @@
 <div>
-  <%= link_to "戻る", public_customer_path(@post.customer.id), class: "btn-gradient-flat" %>
-</div>
-<div class="">
-  <div class="row col-md-12", style="margin: 0 auto;">
-    <%= image_tag @post.image, size: "500x500" %>
-    <div class="col-md-6", style="padding-right: 0;">
-      <div class="card">
-        <div class="card-header">
+  <div class="row col-md-12", style="margin: 0 auto; justify-content: center;">
+    <div>
+      <%= link_to :back do %>
+        <button>戻る</button>
+      <% end %>
+    </div>
+    <%= image_tag @post.image, size: "592x592" %>
+    <div class="col-md-5", style="padding-left: 0; padding-right: 0;">
+      <div class="card card-show-height">
+        <div class="card-header ch">
           <% if @post.customer.profile_image.attached? %>
             <%= link_to public_customer_path(@post.customer_id) do %>
               <%= image_tag @post.customer.profile_image, class: "rounded-circle", size: "50x50" %>
@@ -23,7 +25,7 @@
             <span class="name-space"><%= link_to "削除", public_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-gradient-flat" %></span>
           <% end %>
         </div>
-        <div class="card-body">
+        <div class="card-body cb pt">
           <div class="card-body2">
             <div>
               <h1><%= "#{@post.title}cc" %></h1>
@@ -37,20 +39,26 @@
                 <% end %>
                 <%= link_to @post.favorites.count, public_post_customer_path(@post) %>
               </span>
-              <span class="space">コメント件数：<span id="comment_count"><%= "#{@post.comments.count}人" %></span></span>
+              <span class="space">コメント件数：<span id="comment_count"><%= "#{@post.comments.count}件" %></span></span>
             </div>
           </div>
           <div>
             <%= @post.body if !@post.body.blank? %>
           </div>
+          <div class="pt-height">
+            <div id="comments-area"><%= render "public/comments/comment", post: @post, comment: @comment %></div>
+          </div>
         </div>
-        <div class="card-body">
-          <div id="comments-area"><%= render "public/comments/comment", post: @post, comment: @comment %></div>
-        </div>
-        <div class="card-footer">
+        <div class="card-footer" style="padding: 0;">
           <%= form_with model: [:public, @post, @comment], local: false do |f| %>
-            <%= f.text_area :comment, cols: "73", placeholder: "コメントを追加" %>
-            <%= f.submit "送信する" %>
+            <div style="text-align: center;">
+              <span class="pp aa"><%= f.text_area :comment, cols: "59", placeholder: "コメントを追加" %></span>
+              <span class="pp bb">
+                <%= button_tag type: "submit", class: 'btn btn-success' do %>
+                  <i class="far fa-paper-plane fa-flip-horizontal"></i>
+                <% end %>
+              </span>
+            </div>
           <% end %>
         </div>
       </div>

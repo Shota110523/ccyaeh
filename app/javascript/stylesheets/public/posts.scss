@@ -26,3 +26,62 @@
 .name-space {
   margin-left: 10px;
 }
+
+.comment-group {
+  margin-bottom: 16px;
+  margin-left: initial;
+  width: 100%;
+}
+
+.comment-block {
+  display: flex;
+  align-items: self-start;
+  justify-content: center;
+  flex-flow: column;
+  margin-top: 5px;
+  width: 85%;
+}
+
+.comment {
+  margin-left: 9px;
+  margin-top: 5px;
+}
+
+.btn-danger {
+  vertical-align: unset;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.pp {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.pt {
+  padding-top: 10px;
+  padding-bottom: 16px;
+  flex: none;
+}
+
+.pt-height {
+  padding-top: 18px;
+  height: 342px;
+}
+
+.aa {
+  margin-top: 7px;
+}
+
+.bb {
+  margin-left: 1px;
+}
+
+.ch {
+  top: 80px;
+}
+
+.cb {
+  height: 448px;
+  overflow: auto;
+}
