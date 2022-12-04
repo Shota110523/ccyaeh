@@ -18,6 +18,7 @@ import "../stylesheets/public/posts"
 import "../stylesheets/public/homes"
 import "../stylesheets/public/sessions"
 import "../stylesheets/public/customers"
+import "../stylesheets/public/favorites"
 import "../stylesheets/admins/sessions"
 import "../stylesheets/admins/customers"
 

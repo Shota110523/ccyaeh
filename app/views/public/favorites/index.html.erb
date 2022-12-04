@@ -1,41 +1,47 @@
 <h1>いいね一覧</h1>
 <% current_customer.favorites.each do |favorite| %>
-
-  <div>
-    <% if favorite.post.customer.profile_image.attached? %>
-      <%= link_to public_customer_path(favorite.post.customer_id) do %>
-        <%= image_tag favorite.post.customer.profile_image, class: "rounded-circle", size: "50x50" %>
-      <% end %>
-    <% else %>
-      <%= link_to public_customer_path(favorite.post.customer_id) do %>
-        <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= link_to favorite.post.customer.name, public_customer_path(favorite.post.customer_id) %>
-  </div>
-
-  <div>
-    <%= link_to public_post_path(favorite.post) do %>
-      <%= image_tag favorite.post.image, size: "50x50" %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= "#{favorite.post.title}cc" if !favorite.post.title.blank? %>
-  </div>
-
-  <div id="favorite_buttons_<%= favorite.post.id %>">
-    <% if current_customer.favorites.exists?(post_id: favorite.post) %>
-      <%= render "public/favorites/unfavorite_button", post: favorite.post %>
-    <% else %>
-      <%= render "public/favorites/favorite_button", post: favorite.post %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= link_to "#{favorite.post.comments.count} コメント", public_post_path(favorite.post.id) %>
-  </div>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <% if favorite.post.customer.profile_image.attached? %>
+          <%= link_to public_customer_path(favorite.post.customer_id) do %>
+            <%= image_tag favorite.post.customer.profile_image, class: "rounded-circle", size: "50x50" %>
+          <% end %>
+        <% else %>
+          <%= link_to public_customer_path(favorite.post.customer_id) do %>
+            <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to favorite.post.customer.name, public_customer_path(favorite.post.customer_id) %>
+      </td>
+      <td>
+        <div class="imagespace">
+          <%= link_to public_post_path(favorite.post) do %>
+            <%= image_tag favorite.post.image, size: "50x50" %>
+          <% end %>
+        </div>
+      </td>
+      <td>
+        <%= "#{favorite.post.title}cc" %>
+      </td>
+      <td>
+        <div class="f-c-space" id="favorite_buttons_<%= favorite.post.id %>">
+          <% if current_customer.favorites.exists?(post_id: favorite.post) %>
+            <%= render "public/favorites/unfavorite_button", post: favorite.post %>
+          <% else %>
+            <%= render "public/favorites/favorite_button", post: favorite.post %>
+          <% end %>
+        </div>
+      </td>
+      <td>
+        <div class="f-c-space">
+          <%= link_to "#{favorite.post.comments.count} コメント", public_post_path(favorite.post.id) %>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <% end %>

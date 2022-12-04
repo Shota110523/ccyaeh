@@ -1,19 +1,22 @@
 <% @favorites.each do |favorite| %>
-
-  <div>
-    <% if favorite.customer.profile_image.attached? %>
-      <%= link_to public_customer_path(favorite.customer_id) do %>
-        <%= image_tag favorite.customer.profile_image, class: "rounded-circle", size: "50x50" %>
-      <% end %>
-    <% else %>
-      <%= link_to public_customer_path(favorite.customer_id) do %>
-        <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= link_to favorite.customer.name, public_customer_path(favorite.customer_id) %>
-  </div>
-
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <% if favorite.customer.profile_image.attached? %>
+          <%= link_to public_customer_path(favorite.customer_id) do %>
+            <%= image_tag favorite.customer.profile_image, class: "rounded-circle", size: "50x50" %>
+          <% end %>
+        <% else %>
+          <%= link_to public_customer_path(favorite.customer_id) do %>
+            <%= image_tag asset_path('no_image.jpg'), class: "rounded-circle", size: "50x50" %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to favorite.customer.name, public_customer_path(favorite.customer_id) %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <% end %>
